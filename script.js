@@ -232,6 +232,16 @@ function cliqueMoeda(valor) {
     }
 }
 
+// ==========================================
+// Remove o atributo 'draggable' em telas pequenas para que o 
+// navegador não bloqueie o evento de toque/clique nas moedas.
+// ==========================================
+if (window.innerWidth <= 650) {
+    document.querySelectorAll('.moeda').forEach(moeda => {
+        moeda.removeAttribute('draggable');
+    });
+}
+
 // Chamadas iniciais para preparar a interface
 carregarRefri();
 atualizarVisor();

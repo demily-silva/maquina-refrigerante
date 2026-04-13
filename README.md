@@ -4,7 +4,7 @@ Projeto desenvolvido para a disciplina **SCC0219 - Introdução ao Desenvolvimen
 
 ## 🌐 Demonstração
 
-Pode testar a máquina aqui:
+Você pode testar a máquina aqui:
 👉 [https://demily-silva.github.io/maquina-refrigerante/](https://demily-silva.github.io/maquina-refrigerante/)
 
 ---
@@ -24,8 +24,24 @@ O sistema foi projetado para simular o comportamento de uma *Máquina de Refrige
 ## 🛠️ Tecnologias Utilizadas
 
 - **HTML5:** Estrutura semântica e API de Drag and Drop.
-- **CSS3:** Estilização avançada, Flexbox, Grid Layout, Animações e Media Queries.
+- **CSS3:** Estilização, Flexbox, Grid Layout, Animações e Media Queries.
 - **JavaScript:** Lógica de estado, manipulação assíncrona (Async/Await) e eventos.
+
+---
+
+## 💻 Como Executar Localmente
+
+Caso queira rodar o projeto na sua própria máquina, siga os passos abaixo:
+
+1. Clone este repositório:
+   ```bash
+   git clone [https://github.com/demily-silva/maquina-refrigerante.git](https://github.com/demily-silva/maquina-refrigerante.git)
+   ```
+2. Entre na pasta do projeto:
+   ```bash
+   cd maquina-refrigerante
+   ```
+3. Como é um projeto *Vanilla* (sem frameworks), basta abrir o arquivo `index.html` no seu navegador de preferência para ver a aplicação funcionando.
 
 ---
 

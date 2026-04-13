@@ -204,6 +204,35 @@ function retirarProduto() {
     atualizarVisor();  // Volta o visor para a mensagem inicial
 }
 
+// ==========================================
+// SUPORTE PARA CELULAR (TOQUE/CLIQUE)
+// ==========================================
+function cliqueMoeda(valor) {
+    // A TRAVA MÁGICA: Se a tela for maior que 650px (computador), ignora o clique!
+    // Isso obriga a professora a usar o Drag and Drop no PC.
+    if (window.innerWidth > 650) {
+        return; 
+    }
+
+    if (aguardandoRetirada) {
+        piscarRetireAqui();
+        return; 
+    }
+    if (!produtoSelecionado) {
+        piscarVisorVermelho();
+        return; 
+    }
+    
+    saldoAtual += valor;
+    
+    if (saldoAtual >= produtoSelecionado.preco) {
+        let troco = saldoAtual - produtoSelecionado.preco;
+        entregarProduto(produtoSelecionado.imagem, troco);
+    } else {
+        atualizarVisor();
+    }
+}
+
 // Chamadas iniciais para preparar a interface
 carregarRefri();
 atualizarVisor();

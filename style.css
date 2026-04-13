@@ -1,0 +1,345 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;  /* Alinha o conteúdo à esquerda*/
+    align-items: center; /* Centraliza verticalmente */
+
+    /* Configuração da imagem de fundo*/
+    background-image: url('/img/lancCaaso.jpeg');
+    background-size: cover; /* Faz a imagem preencher toda a tela */
+    
+    /*Fixa o lado esquerdo da foto, assim quando a tela diminui, a parede não sai do lugar */
+    background-position: left center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Evita barras de rolagem */
+}
+
+#maquina {
+    width: 530px; 
+    height: 675px;
+    background-color: #FFD700;
+    border: 8px solid #1a1a1a;
+    border-radius: 40px;
+    margin: 0px ;
+    position: relative;
+    margin-left: 90px;
+    left: 0;
+
+    /* Sombra para dar efeito 3D e volume na máquina */
+    box-shadow: 10px 10px 0px #b89b00, 0px 20px 30px rgba(0,0,0,0.6);
+    flex-shrink: 0; /* Impede que o Flexbox do body amasse a máquina antes da hora */
+
+}
+
+#vitrine {
+    width: 450px; 
+    height: 330px;
+    background-color: #222;
+    position: absolute;
+    top: 30px;
+    left: 22px;
+    border: 4px solid #1a1a1a;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px;
+    padding: 15px;
+    box-shadow: inset 5px 5px 15px rgba(0,0,0,0.5);
+}
+
+.item {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item img {
+    max-height: 85px; 
+    width: auto;
+    border-radius: 14px;
+}
+
+.item p {
+    font-weight: bold;
+    margin: 5px 0;
+    color: #333;
+}
+
+.item button {
+    background-color: #1a1a1a;
+    color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+.item button:hover {
+    background-color: #444; 
+}
+
+#visor {
+    width: 280px;
+    height: 75px;
+    background-color: #000;
+    color: #FFD700;
+    position: absolute;
+    top: 410px; 
+    left: 22px;
+    border: 3px solid #333;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+}
+
+#visor p {
+    color: rgb(251, 251, 251);
+    font-size: 30px;
+    text-align: center;
+    padding: 10px;
+}
+
+#entradaMoedas {
+    width: 90px;
+    height: 90px;
+    background-color: #1a1a1a;
+    position: absolute; 
+    top: 415px;
+    left: 385px; 
+    border: 4px solid #333;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 4px 4px 10px rgba(0,0,0,0.8);
+}
+
+/* Criando o desenho da "fenda" dentro do quadrado */
+#entradaMoedas::after {
+    content: "";
+    width: 10px;
+    height: 60px;
+    background-color: #000;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(255,215,0,0.3); 
+}
+
+#moedas {
+    position: absolute;
+    bottom: 48px; 
+    left: 265px; 
+    display: flex;
+    gap: 8px; 
+}
+
+.moeda {
+    width: 75px;
+    height: 75px;
+    background: linear-gradient(145deg, #81807f, #4e4e4e); 
+    border: 2px solid #565551;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #080807;
+    cursor: grab; /* Muda o mouse para uma mãozinha de pegar */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    font-size: 25px;
+}
+
+
+.moeda:active {
+    cursor: grabbing; /* Muda o cursor quando o botão do mouse está apertado */
+    transform: scale(0.95); /* Dá um efeito de "afundar" a moeda ao clicar */
+}
+
+
+#dispenser {
+    width: 220px; 
+    height: 150px;
+    background-color: #1a1a1a;
+    position: absolute;
+    bottom: 15px; 
+    left: 22px; 
+    border: 4px solid #333;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0px 10px 20px rgba(0,0,0,0.9);
+    padding-top: 5px; 
+}
+
+#dispenser::before {
+    content: "RETIRE AQUI";
+    color: #444;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: 5px;
+}
+
+/* Animação CSS acionada via JavaScript quando a compra é aprovada */
+@keyframes cair {
+    0% { transform: translateY(-100px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* =========================================
+   DESTAQUE E ERROS
+   ========================================= */
+
+/* Transição suave para os itens da vitrine */
+.item {
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+/* Destaque do item selecionado */
+.item.destaque {
+    background-color: #e0ffe0; 
+    box-shadow: 0 0 15px #00ff00; 
+    transform: scale(1.05); 
+    outline: 3px solid #00ff00; 
+}
+
+/* Classe para piscar em vermelho avisando erro */
+.texto-erro {
+    color: #ff0000 !important;
+    text-shadow: 0 0 8px red;
+}
+
+/* Animação para piscar o texto "RETIRE AQUI" */
+@keyframes piscarRetire {
+    0%, 100% { color: #444; text-shadow: none; }
+    50% { color: #ff0000; text-shadow: 0 0 8px red; }
+}
+
+
+#dispenser.alerta::before {
+    animation: piscarRetire 0.15s infinite;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+   ========================================= */
+
+/*Se a janela diminuir mas ainda for desktop/tablet */
+@media (max-width: 1100px) and (min-width: 651px) {
+    #maquina {
+       
+        margin-left: 50px; 
+        
+        /*força a não centralizar, anulando qualquer margem automática na direita */
+        margin-right: auto; 
+        
+        /*Faz a máquina encolher "grudada" na esquerda, em vez de encolher para o centro */
+        transform-origin: left center;
+        /*Reduz a escala da máquina para caber melhor em telas menores, mantendo a proporção */
+        transform: scale(0.99);
+    }
+}
+
+/* Telas de Celular (Abaixo de 650px) */
+@media (max-width: 650px) {
+    body {
+        background-position: left top; 
+        overflow-y: auto;   /* Permite rolagem no celular (scroll) */
+        align-items: flex-start;
+        padding: 20px 0;
+        height: auto;
+    }
+
+    #maquina {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%; 
+        max-width: 320px;
+        height: auto; 
+        left: 0; 
+        padding: 30px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        transform: scale(1);
+    }
+
+    #vitrine, #visor, #entradaMoedas, #dispenser, #moedas {
+        position: static !important;
+        margin: 0 auto;
+        transform: none !important;
+    }
+
+    #vitrine {
+        order: 1;
+        width: 100%;
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+        padding: 10px;
+        box-sizing: border-box; 
+    }
+
+    .item img {
+        max-height: 60px; /* Fotos menores para o celular */
+    }
+
+    #visor {
+        width: 100%;
+        height: 70px;
+        order: 2;
+    }
+
+    #visor p {
+        font-size: 16px; 
+    }
+
+    #entradaMoedas { order: 3; }
+
+    #moedas {
+        flex-wrap: wrap;  /* Se não couber na linha, joga para a linha de baixo */
+        justify-content: center;
+        order: 4;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    #dispenser {
+        order: 5;
+        position: relative !important; 
+        
+        max-width: 280px; 
+        height: 120px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: auto;
+    }
+
+    #dispenser::before {
+        position: absolute;
+        top: 5px; 
+        left: 50%;
+        transform: translateX(-50%); 
+        width: 100%;
+        text-align: center;
+        
+    }
+}

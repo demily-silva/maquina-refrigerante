@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máquina de vendas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="maquina">
+        <div id="vitrine">
+            
+        </div>
+
+        <div id="visor">
+            <p>CRÉDITOS: <br> <span id="saldo">R$ 0.00</span></p>
+            <p></p>
+        </div>
+
+        <div id="entradaMoedas" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+        <div id="dispenser">
+            
+        </div>
+
+        <div id="moedas">
+            <div class="moeda" draggable="true" ondragstart="drag(event)" data-valor="0.25">25c</div>
+            <div class="moeda" draggable="true" ondragstart="drag(event)" data-valor="0.50">50c</div>
+            <div class="moeda" draggable="true" ondragstart="drag(event)" data-valor="1.00">1R</div>
+        </div>
+        
+    </div>
+</body>
+</html>

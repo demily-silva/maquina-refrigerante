@@ -208,8 +208,7 @@ function retirarProduto() {
 // SUPORTE PARA CELULAR (TOQUE/CLIQUE)
 // ==========================================
 function cliqueMoeda(valor) {
-    // A TRAVA MÁGICA: Se a tela for maior que 650px (computador), ignora o clique!
-    // Isso obriga a professora a usar o Drag and Drop no PC.
+    // Se a tela for maior que 650px (computador), ignora o clique!
     if (window.innerWidth > 650) {
         return; 
     }

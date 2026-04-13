@@ -7,7 +7,7 @@ body {
     align-items: center; /* Centraliza verticalmente */
 
     /* Configuração da imagem de fundo*/
-    background-image: url('/img/lancCaaso.jpeg');
+    background-image: url('./img/lancCaaso.jpeg');
     background-size: cover; /* Faz a imagem preencher toda a tela */
     
     /*Fixa o lado esquerdo da foto, assim quando a tela diminui, a parede não sai do lugar */

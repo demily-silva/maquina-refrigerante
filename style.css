@@ -16,7 +16,7 @@ body {
     background-attachment: fixed;
     height: 100vh;
     font-family: Arial, sans-serif;
-    overflow: hidden; /* Evita barras de rolagem */
+    
 }
 
 #maquina {

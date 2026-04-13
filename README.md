@@ -41,7 +41,7 @@ Caso queira rodar o projeto na sua própria máquina, siga os passos abaixo:
    ```bash
    cd maquina-refrigerante
    ```
-3. Como é um projeto *Vanilla* (sem frameworks), basta abrir o arquivo `index.html` no seu navegador de preferência para ver a aplicação funcionando.
+3. Como é um projeto sem frameworks, basta abrir o arquivo `index.html` no seu navegador de preferência para ver a aplicação funcionando.
 
 ---
 
